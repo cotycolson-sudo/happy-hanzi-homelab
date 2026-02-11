@@ -1,0 +1,16 @@
+[Unit]
+Description=Jellyfin Trilingual Subtitle Automation - TV Shows
+After=network.target
+
+[Service]
+Type=simple
+User=coty
+WorkingDirectory=/home/coty
+ExecStart=/usr/bin/python3 /home/coty/jellyfin_trilingual_subtitle_automation.py /data/Shows --watch --interval 60
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
