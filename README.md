@@ -291,7 +291,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-Project Link: [https://github.com/YOUR_USERNAME/jellyfin-trilingual-subtitles](https://github.com/YOUR_USERNAME/jellyfin-trilingual-subtitles)
+Project Link: [https://github.com/cotycolson-sudo/jellyfin-trilingual-subtitles](https://github.com/cotycolson-sudo/jellyfin-trilingual-subtitles)
 
 ---
 
