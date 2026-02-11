@@ -25,7 +25,7 @@ Automatically generate trilingual subtitles (Chinese, Pinyin, English) for your 
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/jellyfin-trilingual-subtitles.git
+git clone https://github.com/cotycolson-sudo/jellyfin-trilingual-subtitles.git
 cd jellyfin-trilingual-subtitles
 
 # Install dependencies
@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 ```bash
 # Install directly from GitHub
-pip install git+https://github.com/YOUR_USERNAME/jellyfin-trilingual-subtitles.git
+pip install git+https://github.com/cotycolson-sudo/jellyfin-trilingual-subtitles.git
 ```
 
 ## 💡 Usage
