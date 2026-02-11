@@ -167,15 +167,22 @@ def merge_subtitles_by_time(chinese_subs: List[Dict], english_subs: List[Dict]) 
 def write_trilingual_srt(subtitles: List[Dict], output_filename: str):
     """
     Write the trilingual subtitles to an SRT file.
-    Format: Chinese, Pinyin, English (each on separate lines)
+    Format: Chinese (single line), Pinyin (single line), English (can be multi-line)
     """
     with open(output_filename, 'w', encoding='utf-8') as f:
         for sub in subtitles:
             # Write subtitle block
             f.write(f"{sub['index']}\n")
             f.write(f"{sub['start_time']} --> {sub['end_time']}\n")
-            f.write(f"{sub['chinese']}\n")
+            
+            # Chinese - replace line breaks with spaces to keep on one line
+            chinese_single_line = sub['chinese'].replace('\n', ' ')
+            f.write(f"{chinese_single_line}\n")
+            
+            # Pinyin - already single line
             f.write(f"{sub['pinyin']}\n")
+            
+            # English - keep as-is (may have multiple lines)
             f.write(f"{sub['english']}\n")
             f.write("\n")  # Blank line between blocks
 

@@ -25,7 +25,7 @@ Automatically generate trilingual subtitles (Chinese, Pinyin, English) for your 
 
 ```bash
 # Clone the repository
-git clone https://github.com/cotycolson-sudo/jellyfin-trilingual-subtitles.git
+git clone https://github.com/YOUR_USERNAME/jellyfin-trilingual-subtitles.git
 cd jellyfin-trilingual-subtitles
 
 # Install dependencies
@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 ```bash
 # Install directly from GitHub
-pip install git+https://github.com/cotycolson-sudo/jellyfin-trilingual-subtitles.git
+pip install git+https://github.com/YOUR_USERNAME/jellyfin-trilingual-subtitles.git
 ```
 
 ## 💡 Usage
@@ -55,6 +55,24 @@ Continuously monitor a directory for new subtitle pairs:
 
 ```bash
 python jellyfin_trilingual_subtitle_automation.py "/data/Movies" --watch
+```
+
+**For TV Shows:**
+
+```bash
+python jellyfin_trilingual_subtitle_automation.py "/data/Shows" --watch
+```
+
+**Watch Multiple Directories:**
+
+You can run multiple instances to monitor both Movies and TV Shows:
+
+```bash
+# Terminal 1
+python jellyfin_trilingual_subtitle_automation.py "/data/Movies" --watch
+
+# Terminal 2  
+python jellyfin_trilingual_subtitle_automation.py "/data/Shows" --watch
 ```
 
 With custom check interval:
@@ -83,9 +101,10 @@ optional arguments:
 The script automatically detects subtitle pairs based on standard naming conventions:
 
 **Chinese subtitles:**
-- `moviename.chs.srt`
-- `moviename.chi.srt`
-- `moviename.zh.srt`
+- `moviename.chs.srt` (Simplified Chinese)
+- `moviename.chi.srt` (Chinese)
+- `moviename.zh.srt` (Chinese)
+- `moviename.zho.srt` (ISO 639-2 Chinese code)
 
 **English subtitles:**
 - `moviename.eng.srt`
@@ -93,6 +112,33 @@ The script automatically detects subtitle pairs based on standard naming convent
 
 **Output:**
 - `moviename.srt` (trilingual)
+
+### 🌍 Customizing for Other Languages
+
+Want to use different language pairs? You can modify the script to support any languages:
+
+1. **Open the script** in a text editor
+2. **Find the `find_subtitle_pairs` function** (around line 183)
+3. **Modify these lines:**
+
+```python
+# Change these to your desired languages
+# Example for Spanish + French:
+chinese_subs = list(path.glob("*.spa.srt")) + list(path.glob("*.es.srt"))
+english_subs = list(path.glob("*.fre.srt")) + list(path.glob("*.fr.srt"))
+```
+
+4. **Update the suffix matching** (around line 195):
+
+```python
+# Change these suffixes to match your languages
+for suffix in ['.spa', '.es']:  # Spanish example
+    if base_name.endswith(suffix):
+        base_name = base_name[:-len(suffix)]
+        break
+```
+
+5. **Modify pinyin generation** if needed (for non-Chinese languages, you might want to remove the pinyin conversion entirely or replace it with romanization for other languages)
 
 ## 🎬 Example Output
 
@@ -245,7 +291,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-Project Link: [https://github.com/cotycolson-sudo/jellyfin-trilingual-subtitles](https://github.com/cotycolson-sudo/jellyfin-trilingual-subtitles)
+Project Link: [https://github.com/YOUR_USERNAME/jellyfin-trilingual-subtitles](https://github.com/YOUR_USERNAME/jellyfin-trilingual-subtitles)
 
 ---
 
