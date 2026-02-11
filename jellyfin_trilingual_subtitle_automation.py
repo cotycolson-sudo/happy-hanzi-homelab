@@ -189,14 +189,14 @@ def find_subtitle_pairs(directory: str) -> List[Tuple[str, str, str]]:
     path = Path(directory)
     
     # Find all subtitle files
-    chinese_subs = list(path.glob("*.chs.srt")) + list(path.glob("*.chi.srt")) + list(path.glob("*.zh.srt"))
+    chinese_subs = list(path.glob("*.chs.srt")) + list(path.glob("*.chi.srt")) + list(path.glob("*.zh.srt")) + list(path.glob("*.zho.srt"))
     english_subs = list(path.glob("*.eng.srt")) + list(path.glob("*.en.srt"))
     
     # Match pairs
     for chinese_file in chinese_subs:
         # Extract base filename
         base_name = chinese_file.stem
-        for suffix in ['.chs', '.chi', '.zh']:
+        for suffix in ['.chs', '.chi', '.zh', '.zho']:
             if base_name.endswith(suffix):
                 base_name = base_name[:-len(suffix)]
                 break
